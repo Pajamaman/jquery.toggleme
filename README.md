@@ -23,21 +23,21 @@ will initialize a toggleme instance. By default, the body is hidden and the titl
 
 ### Options
 
-icon - Boolean - Default: true
+####icon - Boolean - Default: true
 Set whether or not to display an icon next to the title.
 
 Example:
 
     $('.someclass').toggleme({ icon: false });
 
-autoOpen - Boolean - Default: false
+####autoOpen - Boolean - Default: false
 Set whether or not the body should be hidden.
 
 Example:
 
     $('.someclass').toggleme({ autoOpen: true });
 
-linkTitle - Boolean - Default: true
+####inkTitle - Boolean - Default: true
 Set whether or not the title should be wrapped in an <a> tag.
 
 Example:
@@ -46,7 +46,7 @@ Example:
 
 ### Methods
 
-open - .toggleme('open', options)
+####open - .toggleme('open', options)
 Makes the toggleme visible.
 
 Options:
@@ -58,7 +58,7 @@ Example:
 
     $('.someclass').toggleme('open', { animate: false });
 
-close - .toggleme('close', options)
+####close - .toggleme('close', options)
 Makes the toggleme hidden.
 
 Options:
