@@ -8,7 +8,7 @@ A toggleme is a content area with a title and a body. Clicking on the title togg
 
 The HTML should look something like this:
 
-    <div class="toggleme">
+    <div class="someclass">
 	    <p>Toggle Me!</p>
 		<div>
 		    Blah blah blah...
@@ -17,9 +17,9 @@ The HTML should look something like this:
 
 A call to:
 
-    $('.toggleme').toggleme();
+    $('.someclass').toggleme();
 
-will initialize a toggleme instance. By default, the body is hidden and the title is styled as a link.
+will initialize a toggleme instance. By default, the body is hidden and the title is wrapped in an <a> tag.
 
 ### Options
 
@@ -28,21 +28,21 @@ Set whether or not to display an icon next to the title.
 
 Example:
 
-    $(.toggleme).toggleme({ icon: false });
+    $('.someclass').toggleme({ icon: false });
 
 autoOpen - Boolean - Default: false
 Set whether or not the body should be hidden.
 
 Example:
 
-    $(.toggleme).toggleme({ autoOpen: true });
+    $('.someclass').toggleme({ autoOpen: true });
 
 linkTitle - Boolean - Default: true
-Set whether or not the title should be styled as a link.
+Set whether or not the title should be wrapped in an <a> tag.
 
 Example:
 
-    $(.toggleme).toggleme({ linkTitle: false });
+    $('.someclass').toggleme({ linkTitle: false });
 
 ### Methods
 
@@ -56,7 +56,7 @@ Options:
 
 Example:
 
-    $(.toggleme).toggleme('open', { animate: false });
+    $('.someclass').toggleme('open', { animate: false });
 
 close - .toggleme('close', options)
 Makes the toggleme hidden.
@@ -68,4 +68,4 @@ Options:
 
 Example:
 
-    $(.toggleme).toggleme('close', { animate: false });
+    $('.someclass').toggleme('close', { animate: false });

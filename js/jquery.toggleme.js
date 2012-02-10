@@ -58,7 +58,8 @@
 				var body = title.next();
 				
 				if (title.hasClass('icon')) {
-					title.addClass('open').removeClass('close');
+					title.css('background', 'url("img/open.png") left center no-repeat')
+						.css('padding-left', '1em');
 				}
 				
 				if (settings.animate == 'true') {
@@ -80,7 +81,8 @@
 				var body = title.next();
 				
 				if (title.hasClass('icon')) {
-					title.removeClass('open').addClass('close');
+					title.css('background', 'url("img/close.png") left center no-repeat')
+						.css('padding-left', '1em');
 				}
 				
 				if (settings.animate == 'true') {
