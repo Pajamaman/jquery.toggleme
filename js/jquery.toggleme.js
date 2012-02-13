@@ -3,6 +3,9 @@
 // http://daveden.wordpress.com/
 
 (function($) {
+	var openImage = 'img/open.png';
+	var closeImage = 'img/close.png';
+	
 	var methods = {
 		init: function(options) {
 			var settings = $.extend({
@@ -60,7 +63,7 @@
 				var body = title.next();
 				
 				if (title.hasClass('icon')) {
-					title.css('background', 'url("img/open.png") left center no-repeat')
+					title.css('background', 'url("' + openImage + '") left center no-repeat')
 						.css('padding-left', '1em');
 				}
 				
@@ -89,7 +92,7 @@
 				var body = title.next();
 				
 				if (title.hasClass('icon')) {
-					title.css('background', 'url("img/close.png") left center no-repeat')
+					title.css('background', 'url("' + closeImage + '") left center no-repeat')
 						.css('padding-left', '1em');
 				}
 				
