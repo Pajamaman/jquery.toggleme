@@ -37,12 +37,19 @@ Example:
 
     $('.someclass').toggleme({ autoOpen: true });
 
-####inkTitle - Boolean - Default: true
+####linkTitle - Boolean - Default: true
 Set whether or not the title should be wrapped in an <a> tag.
 
 Example:
 
     $('.someclass').toggleme({ linkTitle: false });
+
+####preventDefault - Boolean - Default: false
+Set whether or not the title should be clickable.
+
+Example:
+
+    $('.someclass').toggleme({ preventDefault: true });
 
 ### Methods
 
