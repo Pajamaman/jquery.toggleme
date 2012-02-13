@@ -38,7 +38,7 @@ Example:
     $('.someclass').toggleme({ autoOpen: true });
 
 ####linkTitle - Boolean - Default: true
-Set whether or not the title should be wrapped in an <a> tag.
+Set whether or not the title should be wrapped in an anchor tag.
 
 Example:
 
