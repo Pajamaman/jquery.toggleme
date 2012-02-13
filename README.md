@@ -45,7 +45,7 @@ Example:
     $('.someclass').toggleme({ linkTitle: false });
 
 ####preventDefault - Boolean - Default: false
-Set whether or not the title should be clickable.
+Set whether or not clicking on the title toggles the body between hidden and visible states.
 
 Example:
 
