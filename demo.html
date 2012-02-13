@@ -10,7 +10,7 @@
 				$('#second').toggleme({ icon: false });
 				$('#third').toggleme({ autoOpen: true });
 				$('#fourth').toggleme({ linkTitle: false });
-				$('#fifth').toggleme({ icon: false, linkTitle: false });
+				$('#fifth').toggleme({ icon: false, autoOpen: true, linkTitle: false, preventDefault: true });
 				$('#open-fifth').click(function() {
 					$('#fifth').toggleme('open');
 				});
@@ -46,7 +46,7 @@
 			<div id="first" class="promo">
 				<h2>Toggle Me!</h2>
 				<div>
-					<p>This is how a toggleme acts by default. Exciting, isn't it?! <a href="#">Yeah!</a></p>
+					<p>This is how a toggleme acts by default. Exciting, isn't it?!</p>
 				</div>
 			</div>
 			<div id="second" class="promo">
@@ -74,8 +74,9 @@
 				<a>No! Click me to close it.</a>
 			</span>
 			<div id="fifth" class="promo">
-				<h2>Methods</h2>
+				<h2>preventDefault: true</h2>
 				<div>
+					<p>This is what happens when you set preventDefault to true.</p>
 					<p>Try opening and closing this toggleme by using the links above.</p>
 				</div>
 			</div>

@@ -8,18 +8,18 @@
 			var settings = $.extend({
 				'icon': 'true',
 				'autoOpen': 'false',
-				'linkTitle': 'true'
+				'linkTitle': 'true',
+				'preventDefault': 'false'
 			}, options);
 			
 			return this.each(function() {
 				var title = $(this).children(':first');
 				var body = title.next();
 				
-				// Swap the margin between the title and the body
-				body.css('margin-top', title.css('margin-bottom'));
-				title.css('margin-top', '0px').css('margin-bottom', '0px');
-				body.children(':first').css('margin-top', '0px');
-				body.children(':last').css('margin-bottom', '0px');
+				// Reset margins
+				title.css('margin-top', '0').css('margin-bottom', '0');
+				body.children(':first').css('margin-top', '0');
+				body.children(':last').css('margin-bottom', '0');
 				
 				if (settings.icon == 'true') {
 					title.addClass('icon');
@@ -39,13 +39,15 @@
 					title.html('<a>' + title.html() + '</a>');
 				}
 				
-				title.click(function() {
-					if (body.css('display') == 'none') {
-						$(this).parent().toggleme('open');
-					} else {
-						$(this).parent().toggleme('close');
-					}
-				});
+				if (settings.preventDefault == 'false') {
+					title.click(function() {
+						if (body.css('display') == 'none') {
+							$(this).parent().toggleme('open');
+						} else {
+							$(this).parent().toggleme('close');
+						}
+					});
+				}
 			});
 		},
 		open: function(options) {
@@ -63,10 +65,16 @@
 				}
 				
 				if (settings.animate == 'true') {
+					title.css({
+						'margin-bottom': '0'
+					}).animate({
+						'margin-bottom': '1em'
+					});
 					body.animate({
 						height: 'show'
 					});
 				} else {
+					title.css('margin-bottom', '1em');
 					body.show();
 				}
 			});
@@ -86,10 +94,16 @@
 				}
 				
 				if (settings.animate == 'true') {
+					title.css({
+						'margin-bottom': '1em'
+					}).animate({
+						'margin-bottom': '0'
+					});
 					body.animate({
 						height: 'hide'
 					});
 				} else {
+					title.css('margin-bottom', '0');
 					body.hide();
 				}
 			});
