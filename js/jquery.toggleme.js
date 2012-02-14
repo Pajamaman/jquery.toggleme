@@ -5,6 +5,8 @@
 (function($) {
 	var openImage = 'img/open.png';
 	var closeImage = 'img/close.png';
+	var iconPaddingLeft = '1em';
+	var titleMarginBottom = '1em';
 	
 	var methods = {
 		init: function(options) {
@@ -64,20 +66,20 @@
 				
 				if (title.hasClass('icon')) {
 					title.css('background', 'url("' + openImage + '") left center no-repeat')
-						.css('padding-left', '1em');
+						.css('padding-left', iconPaddingLeft);
 				}
 				
 				if (settings.animate == 'true') {
 					title.css({
 						'margin-bottom': '0'
 					}).animate({
-						'margin-bottom': '1em'
+						'margin-bottom': titleMarginBottom
 					});
 					body.animate({
 						height: 'show'
 					});
 				} else {
-					title.css('margin-bottom', '1em');
+					title.css('margin-bottom', titleMarginBottom);
 					body.show();
 				}
 			});
@@ -93,12 +95,12 @@
 				
 				if (title.hasClass('icon')) {
 					title.css('background', 'url("' + closeImage + '") left center no-repeat')
-						.css('padding-left', '1em');
+						.css('padding-left', iconPaddingLeft);
 				}
 				
 				if (settings.animate == 'true') {
 					title.css({
-						'margin-bottom': '1em'
+						'margin-bottom': titleMarginBottom
 					}).animate({
 						'margin-bottom': '0'
 					});
