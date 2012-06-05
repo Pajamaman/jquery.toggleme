@@ -2,23 +2,6 @@
 <html>
 	<head>
 		<title>jquery.toggleme</title>
-		<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
-		<script src="js/jquery.toggleme.js"></script>
-		<script>
-			$(function() {
-				$('#first').toggleme();
-				$('#second').toggleme({ icon: false });
-				$('#third').toggleme({ autoOpen: true });
-				$('#fourth').toggleme({ linkTitle: false });
-				$('#fifth').toggleme({ icon: false, autoOpen: true, linkTitle: false, preventDefault: true });
-				$('#open-fifth').click(function() {
-					$('#fifth').toggleme('open');
-				});
-				$('#close-fifth').click(function() {
-					$('#fifth').toggleme('close');
-				});
-			});
-		</script>
 		<style>
 			a
 			{
@@ -81,5 +64,22 @@
 				</div>
 			</div>
 		</div>
+		<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+		<script src="js/jquery.toggleme.js"></script>
+		<script>
+			$(function() {
+				$('#first').toggleme();
+				$('#second').toggleme({ icon: false });
+				$('#third').toggleme({ autoOpen: true });
+				$('#fourth').toggleme({ linkTitle: false });
+				$('#fifth').toggleme({ icon: false, autoOpen: true, linkTitle: false, preventDefault: true });
+				$('#open-fifth').click(function() {
+					$('#fifth').toggleme('open');
+				});
+				$('#close-fifth').click(function() {
+					$('#fifth').toggleme('close');
+				});
+			});
+		</script>
 	</body>
 </html>
