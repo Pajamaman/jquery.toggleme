@@ -3,136 +3,115 @@
 // http://daveden.wordpress.com/
 
 (function ($) {
-    "use strict";
+    'use strict';
 
-    var openImage = 'img/open.png',
-        closeImage = 'img/close.png',
-        iconPaddingLeft = '1em',
-        titleMarginBottom = '1em',
-        methods = {
-            init: function (options) {
-                var settings = $.extend({
-                        'icon': true,
-                        'autoOpen': false,
-                        'linkTitle': true,
-                        'preventDefault': false
-                    }, options);
+    var methods = {
+        init: function (options) {
+            var settings = $.extend({
+                    'icon': true,
+                    'autoOpen': false,
+                    'linkTitle': true,
+                    'preventDefault': false
+                }, options);
 
-                return this.each(function () {
-                    var title = $(this).children(':first'),
-                        body = title.next();
+            return this.each(function () {
+                var title = $(this).children(':first'),
+                    body = title.next();
 
-                    // Reset margins
-                    title.css('margin-top', '0').css('margin-bottom', '0');
-                    body.children(':first').css('margin-top', '0');
-                    body.children(':last').css('margin-bottom', '0');
+                if (settings.icon) {
+                    title.addClass('toggleme-icon');
+                }
 
-                    if (settings.icon) {
-                        title.addClass('icon');
-                    }
+                if (!settings.autoOpen) {
+                    $(this).toggleme('close', {
+                        'animate': false
+                    });
+                } else {
+                    $(this).toggleme('open', {
+                        'animate': false
+                    });
+                }
 
-                    if (!settings.autoOpen) {
-                        $(this).toggleme('close', {
-                            'animate': false
-                        });
-                    } else {
-                        $(this).toggleme('open', {
-                            'animate': false
-                        });
-                    }
+                if (settings.linkTitle) {
+                    title.html('<a>' + title.html() + '</a>');
+                }
 
-                    if (settings.linkTitle) {
-                        title.html('<a>' + title.html() + '</a>');
-                    }
-
-                    if (!settings.preventDefault) {
-                        title.click(function () {
-                            if (body.css('display') === 'none') {
-                                $(this).parent().toggleme('open');
-                            } else {
-                                $(this).parent().toggleme('close');
-                            }
-                        });
-                    }
-                });
-            },
-            open: function (options) {
-                var settings = $.extend({
-                        'animate': true
-                    }, options);
-
-                return this.each(function () {
-                    var title = $(this).children(':first'),
-                        body = title.next();
-
-                    if (title.hasClass('icon')) {
-                        title.css('background', 'url("' + openImage + '") left center no-repeat')
-                            .css('padding-left', iconPaddingLeft);
-                    }
-
-                    if (settings.animate) {
-                        if (body.css('display') !== 'none') {
-                            return false;
-                        }
-
-                        title.css({
-                            'margin-bottom': '0'
-                        }).animate({
-                            'margin-bottom': titleMarginBottom
-                        });
-                        body.animate({
-                            height: 'show'
-                        });
-                    } else {
-                        title.css('margin-bottom', titleMarginBottom);
-                        body.show();
-                    }
-                });
-            },
-            close: function (options) {
-                var settings = $.extend({
-                        'animate': true
-                    }, options);
-
-                return this.each(function () {
-                    var title = $(this).children(':first'),
-                        body = title.next();
-
-                    if (title.hasClass('icon')) {
-                        title.css('background', 'url("' + closeImage + '") left center no-repeat')
-                            .css('padding-left', iconPaddingLeft);
-                    }
-
-                    if (settings.animate) {
+                if (!settings.preventDefault) {
+                    title.click(function () {
                         if (body.css('display') === 'none') {
-                            return false;
+                            $(this).parent().toggleme('open');
+                        } else {
+                            $(this).parent().toggleme('close');
                         }
+                    });
+                }
+            });
+        },
+        open: function (options) {
+            var settings = $.extend({
+                    'animate': true
+                }, options);
 
-                        title.css({
-                            'margin-bottom': titleMarginBottom
-                        }).animate({
-                            'margin-bottom': '0'
-                        });
-                        body.animate({
-                            height: 'hide'
-                        });
-                    } else {
-                        title.css('margin-bottom', '0');
-                        body.hide();
+            return this.each(function () {
+                var title = $(this).children(':first'),
+                    body = title.next();
+
+                if (title.hasClass('toggleme-icon')) {
+                    title.addClass('open');
+                    title.removeClass('close');
+                }
+
+                if (settings.animate) {
+                    if (body.css('display') !== 'none') {
+                        return false;
                     }
-                });
-            }
-        };
+
+                    body.animate({
+                        height: 'show'
+                    });
+                } else {
+                    body.show();
+                }
+            });
+        },
+        close: function (options) {
+            var settings = $.extend({
+                    'animate': true
+                }, options);
+
+            return this.each(function () {
+                var title = $(this).children(':first'),
+                    body = title.next();
+
+                if (title.hasClass('toggleme-icon')) {
+                    title.addClass('close');
+                    title.removeClass('open');
+                }
+
+                if (settings.animate) {
+                    if (body.css('display') === 'none') {
+                        return false;
+                    }
+
+                    body.animate({
+                        height: 'hide'
+                    });
+                } else {
+                    body.hide();
+                }
+            });
+        }
+    };
 
     $.fn.toggleme = function (method) {
         if (methods[method]) {
             return methods[method].apply(this, Array.prototype.slice.call(arguments, 1));
         }
 
-        if (typeof method === "object" || !method) {
+        if (typeof method === 'object' || !method) {
             return methods.init.apply(this, arguments);
         }
 
-        $.error("Method " + method + " does not exist on jquery.toggleme");
+        $.error('Method ' + method + ' does not exist on jquery.toggleme');
     };
 }(jQuery));
