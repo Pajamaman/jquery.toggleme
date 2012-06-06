@@ -5,18 +5,18 @@
 (function ($) {
     "use strict";
 
-	var openImage = 'img/open.png',
-	    closeImage = 'img/close.png',
-	    iconPaddingLeft = '1em',
-	    titleMarginBottom = '1em',
+    var openImage = 'img/open.png',
+        closeImage = 'img/close.png',
+        iconPaddingLeft = '1em',
+        titleMarginBottom = '1em',
         methods = {
             init: function (options) {
                 var settings = $.extend({
-                    'icon': true,
-                    'autoOpen': false,
-                    'linkTitle': true,
-                    'preventDefault': false
-                }, options);
+                        'icon': true,
+                        'autoOpen': false,
+                        'linkTitle': true,
+                        'preventDefault': false
+                    }, options);
 
                 return this.each(function () {
                     var title = $(this).children(':first'),
@@ -58,8 +58,8 @@
             },
             open: function (options) {
                 var settings = $.extend({
-                    'animate': true
-                }, options);
+                        'animate': true
+                    }, options);
 
                 return this.each(function () {
                     var title = $(this).children(':first'),
@@ -91,8 +91,8 @@
             },
             close: function (options) {
                 var settings = $.extend({
-                    'animate': true
-                }, options);
+                        'animate': true
+                    }, options);
 
                 return this.each(function () {
                     var title = $(this).children(':first'),
@@ -124,13 +124,15 @@
             }
         };
 
-	$.fn.toggleme = function (method) {
-		if (methods[method]) {
-			return methods[method].apply(this, Array.prototype.slice.call(arguments, 1));
-		} else if (typeof method === 'object' || !method) {
-			return methods.init.apply(this, arguments);
-		} else {
-			$.error('Method ' + method + ' does not exist on jquery.toggleme');
-		}
-	};
+    $.fn.toggleme = function (method) {
+        if (methods[method]) {
+            return methods[method].apply(this, Array.prototype.slice.call(arguments, 1));
+        }
+
+        if (typeof method === "object" || !method) {
+            return methods.init.apply(this, arguments);
+        }
+
+        $.error("Method " + method + " does not exist on jquery.toggleme");
+    };
 }(jQuery));
